@@ -21,7 +21,7 @@ export function AIAssistant() {
         role: "assistant",
         content: AI.CHAT.INITIAL_MESSAGE,
       },
-    ],
+    ] as Message[],
     onError: () => {
       toast.error(AI.CHAT.ERROR_MESSAGE);
     },
