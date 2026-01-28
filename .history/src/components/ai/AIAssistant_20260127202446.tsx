@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { MessageCircle, X, Send, Sparkles, Loader2 } from "lucide-react";
-import { useChat } from "ai/react";
+import { useChat } from "@ai-sdk/react";
 import { toast } from "sonner";
 import { AI } from "@/lib/constants";
 
