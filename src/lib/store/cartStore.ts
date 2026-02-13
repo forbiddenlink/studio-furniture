@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Product, CartStore } from '@/types';
+import { CART } from '@/lib/constants';
 
 export const useCartStore = create<CartStore>()(
   persist(
@@ -8,8 +9,18 @@ export const useCartStore = create<CartStore>()(
       items: [],
 
       addItem: (product: Product) => {
+        // Validate product is in stock
+        if (!product.inStock) {
+          return false;
+        }
+
         const items = get().items;
         const existingItem = items.find(item => item.product.id === product.id);
+
+        // Check quantity limit
+        if (existingItem && existingItem.quantity >= CART.MAX_QUANTITY_PER_ITEM) {
+          return false;
+        }
 
         if (existingItem) {
           set({
@@ -22,6 +33,7 @@ export const useCartStore = create<CartStore>()(
         } else {
           set({ items: [...items, { product, quantity: 1 }] });
         }
+        return true;
       },
 
       removeItem: (productId: string) => {

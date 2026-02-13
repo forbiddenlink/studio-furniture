@@ -88,26 +88,26 @@ describe('formatErrorResponse', () => {
 
   it('should not expose details for non-AppError in production', () => {
     const originalEnv = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'production';
-    
+    Object.defineProperty(process.env, 'NODE_ENV', { value: 'production', writable: true });
+
     const error = new Error('Internal error');
     const formatted = formatErrorResponse(error);
-    
+
     expect(formatted.error.message).toBe('An unexpected error occurred');
     expect(formatted.error.code).toBe('INTERNAL_ERROR');
-    
-    process.env.NODE_ENV = originalEnv;
+
+    Object.defineProperty(process.env, 'NODE_ENV', { value: originalEnv, writable: true });
   });
 
   it('should include stack trace in development', () => {
     const originalEnv = process.env.NODE_ENV;
-    process.env.NODE_ENV = 'development';
-    
+    Object.defineProperty(process.env, 'NODE_ENV', { value: 'development', writable: true });
+
     const error = new AppError('Test error', 'TEST_ERROR');
     const formatted = formatErrorResponse(error);
-    
+
     expect(formatted.error.stack).toBeDefined();
-    
-    process.env.NODE_ENV = originalEnv;
+
+    Object.defineProperty(process.env, 'NODE_ENV', { value: originalEnv, writable: true });
   });
 });

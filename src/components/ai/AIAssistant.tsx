@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { MessageCircle, X, Send, Sparkles, Loader2 } from "lucide-react";
-import { Chat } from "@ai-sdk/react";
 import { toast } from "sonner";
 import { AI } from "@/lib/constants";
+import { sanitizeInput } from "@/lib/validation";
 
 interface Message {
   id: string;
@@ -29,6 +29,7 @@ export function AIAssistant() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -38,14 +39,33 @@ export function AIAssistant() {
     scrollToBottom();
   }, [messages]);
 
+  // Focus input when chat opens
+  useEffect(() => {
+    if (isOpen) {
+      // Small delay to ensure the input is rendered
+      const timeoutId = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isOpen]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
+    // Sanitize and validate input
+    const sanitizedInput = sanitizeInput(input);
+
+    if (sanitizedInput.length > AI.CHAT.MAX_MESSAGE_LENGTH) {
+      toast.error(`Message is too long. Maximum ${AI.CHAT.MAX_MESSAGE_LENGTH} characters allowed.`);
+      return;
+    }
+
     const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
-      content: input,
+      content: sanitizedInput,
       createdAt: new Date(),
     };
 
@@ -121,7 +141,7 @@ export function AIAssistant() {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       const syntheticEvent = {
@@ -213,13 +233,15 @@ export function AIAssistant() {
           <div className="p-4 border-t">
             <form onSubmit={handleSubmit} className="flex gap-2">
               <Input
+                ref={inputRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onKeyDown={handleKeyDown}
                 placeholder="Ask me anything about our furniture..."
                 className="flex-1"
                 disabled={isLoading}
                 aria-label="Type your message to the AI assistant"
+                aria-describedby="ai-chat-hint"
               />
               <Button
                 type="submit"
@@ -230,8 +252,8 @@ export function AIAssistant() {
                 <Send className="h-4 w-4" aria-hidden="true" />
               </Button>
             </form>
-            <p className="text-xs text-muted-foreground mt-2" role="note">
-              💡 Try: &quot;I need a chair for my reading nook&quot; or &quot;Show me modern tables&quot;
+            <p id="ai-chat-hint" className="text-xs text-muted-foreground mt-2" role="note">
+              Try: &quot;I need a chair for my reading nook&quot; or &quot;Show me modern tables&quot;
             </p>
           </div>
         </Card>

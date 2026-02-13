@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Search, Sparkles, Loader2 } from "lucide-react";
 import { Product } from "@/types";
 import { toast } from "sonner";
+import { UI } from "@/lib/constants";
 
 interface AISearchProps {
   onResults: (results: Product[]) => void;
@@ -15,6 +16,7 @@ interface AISearchProps {
 export function AISearch({ onResults }: AISearchProps) {
   const [query, setQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const smartSearchSuggestions = [
     "modern chair under $1000",
@@ -24,7 +26,16 @@ export function AISearch({ onResults }: AISearchProps) {
     "cozy seating for reading",
   ];
 
-  const performAISearch = async (searchQuery: string) => {
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const performAISearch = useCallback(async (searchQuery: string) => {
     setIsSearching(true);
 
     try {
@@ -46,22 +57,38 @@ export function AISearch({ onResults }: AISearchProps) {
     } finally {
       setIsSearching(false);
     }
-  };
+  }, [onResults]);
+
+  // Debounced search to prevent rapid successive calls
+  const debouncedSearch = useCallback((searchQuery: string) => {
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    searchTimeoutRef.current = setTimeout(() => {
+      performAISearch(searchQuery);
+    }, UI.DEBOUNCE_MS);
+  }, [performAISearch]);
 
   const handleSearch = () => {
-    if (query.trim()) {
-      performAISearch(query);
+    if (query.trim() && !isSearching) {
+      debouncedSearch(query);
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
       handleSearch();
     }
   };
 
   const handleSuggestionClick = (suggestion: string) => {
+    if (isSearching) return;
     setQuery(suggestion);
+    // Clear any pending debounced search
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
     performAISearch(suggestion);
   };
 
@@ -73,7 +100,7 @@ export function AISearch({ onResults }: AISearchProps) {
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyDown}
             placeholder="Try: 'modern chair under $1000' or 'walnut dining table'"
             className="pl-10"
             data-testid="ai-search-input"

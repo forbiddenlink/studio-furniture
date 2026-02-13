@@ -126,7 +126,8 @@ export function reportWebVitals(metric: {
   if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
     // Google Analytics 4
     if ('gtag' in window) {
-      (window as any).gtag('event', metric.name, {
+      const gtag = window.gtag as (command: string, eventName: string, params: Record<string, unknown>) => void;
+      gtag('event', metric.name, {
         value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
         event_label: metric.id,
         non_interaction: true,

@@ -18,7 +18,7 @@ interface ChatRequest {
 export async function POST(req: Request) {
     try {
         // Apply rate limiting
-        const rateLimitHeaders = await rateLimiters.aiChat(req);
+        await rateLimiters.aiChat(req);
         // Validate request body
         const body = await req.json() as ChatRequest;
         

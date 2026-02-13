@@ -3,7 +3,7 @@
  * Prevents abuse and ensures fair usage
  */
 
-import { AppError, RateLimitError } from './error-handler';
+import { RateLimitError } from './error-handler';
 import { API } from './constants';
 
 interface RateLimitStore {

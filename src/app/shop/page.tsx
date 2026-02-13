@@ -18,6 +18,7 @@ import { AISearch } from "@/components/ai/AISearch";
 import { products } from "@/lib/data/products";
 import { Product } from "@/types";
 import { Search, SlidersHorizontal, X, Sparkles } from "lucide-react";
+import { CATEGORIES, PRICE_RANGE } from "@/lib/constants";
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name";
 
@@ -25,18 +26,9 @@ export default function ShopPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<SortOption>("featured");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([PRICE_RANGE.MIN, PRICE_RANGE.MAX]);
   const [aiResults, setAIResults] = useState<Product[] | null>(null);
   const [showAISearch, setShowAISearch] = useState(false);
-
-  const categories = [
-    { value: "all", label: "All Products" },
-    { value: "seating", label: "Seating" },
-    { value: "tables", label: "Tables" },
-    { value: "storage", label: "Storage" },
-    { value: "lighting", label: "Lighting" },
-    { value: "decor", label: "Decor" },
-  ];
 
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = [...products];
@@ -91,14 +83,14 @@ export default function ShopPage() {
     setSearchQuery("");
     setSelectedCategory("all");
     setSortBy("featured");
-    setPriceRange([0, 5000]);
+    setPriceRange([PRICE_RANGE.MIN, PRICE_RANGE.MAX]);
   };
 
   const hasActiveFilters =
     searchQuery ||
     selectedCategory !== "all" ||
-    priceRange[0] !== 0 ||
-    priceRange[1] !== 5000;
+    priceRange[0] !== PRICE_RANGE.MIN ||
+    priceRange[1] !== PRICE_RANGE.MAX;
 
   return (
     <>
@@ -171,7 +163,7 @@ export default function ShopPage() {
                     <SelectValue placeholder="Category" />
                   </SelectTrigger>
                   <SelectContent>
-                    {categories.map((category) => (
+                    {CATEGORIES.map((category) => (
                       <SelectItem key={category.value} value={category.value}>
                         {category.label}
                       </SelectItem>
@@ -228,7 +220,7 @@ export default function ShopPage() {
 
                     {selectedCategory !== "all" && (
                       <Badge variant="secondary" className="gap-2">
-                        {categories.find((c) => c.value === selectedCategory)?.label}
+                        {CATEGORIES.find((c) => c.value === selectedCategory)?.label}
                         <button
                           onClick={() => setSelectedCategory("all")}
                           className="hover:text-foreground"

@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { ShoppingCart } from "lucide-react";
 import { useCartStore } from "@/lib/store/cartStore";
 import { toast } from "sonner";
+import { CART } from "@/lib/constants";
 
 interface ProductCardProps {
   product: Product;
@@ -16,9 +17,22 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem);
+  const items = useCartStore((state) => state.items);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
+
+    if (!product.inStock) {
+      toast.error("This product is out of stock");
+      return;
+    }
+
+    const existingItem = items.find(item => item.product.id === product.id);
+    if (existingItem && existingItem.quantity >= CART.MAX_QUANTITY_PER_ITEM) {
+      toast.warning(`Maximum quantity of ${CART.MAX_QUANTITY_PER_ITEM} reached`);
+      return;
+    }
+
     addItem(product);
     toast.success(`${product.name} added to cart`);
   };

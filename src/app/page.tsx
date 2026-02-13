@@ -1,10 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Truck, Shield, Headphones } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { ArrowRight, Truck, Shield, Headphones, Loader2 } from "lucide-react";
+import { toast } from "sonner";
+import { validateEmail } from "@/lib/validation";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { AIRecommendations } from "@/components/ai/AIRecommendations";
 import { getFeaturedProducts } from "@/lib/data/products";
@@ -61,6 +65,30 @@ const features = [
 
 export default function HomePage() {
   const featuredProducts = getFeaturedProducts();
+  const [email, setEmail] = useState("");
+  const [isSubscribing, setIsSubscribing] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const validation = validateEmail(email);
+    if (!validation.isValid) {
+      toast.error(validation.error || "Invalid email address");
+      return;
+    }
+
+    setIsSubscribing(true);
+    try {
+      // Simulate API call (replace with actual endpoint when available)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast.success("Thanks for subscribing! Check your inbox for a confirmation.");
+      setEmail("");
+    } catch {
+      toast.error("Failed to subscribe. Please try again.");
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   return (
     <>
@@ -264,14 +292,26 @@ export default function HomePage() {
               Subscribe to our newsletter for exclusive offers, styling tips, and
               early access to new collections.
             </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <Input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-md bg-primary-foreground text-foreground"
+                className="flex-1 bg-primary-foreground text-foreground"
+                disabled={isSubscribing}
+                aria-label="Email address for newsletter"
+                required
               />
-              <Button type="submit" variant="secondary" size="lg">
-                Subscribe
+              <Button type="submit" variant="secondary" size="lg" disabled={isSubscribing}>
+                {isSubscribing ? (
+                  <>
+                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    Subscribing...
+                  </>
+                ) : (
+                  "Subscribe"
+                )}
               </Button>
             </form>
           </div>
