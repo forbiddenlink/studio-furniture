@@ -109,7 +109,7 @@ export default function HomePage() {
         <section className="relative h-[85vh] min-h-150 flex items-center justify-center bg-muted overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80"
+              src="/images/hero-main.png"
               alt="Modern minimalist furniture"
               fill
               className="object-cover"
@@ -224,7 +224,7 @@ export default function HomePage() {
                   className="group relative aspect-square overflow-hidden rounded-lg bg-muted transition-all hover:shadow-xl"
                 >
                   <Image
-                    src={category.image}
+                    src={`/images/categories/${category.name.toLowerCase()}.png`}
                     alt={category.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -271,7 +271,7 @@ export default function HomePage() {
               </div>
               <div className="aspect-square bg-muted rounded-lg overflow-hidden relative">
                 <Image
-                  src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=800&q=80"
+                  src="/images/about-section.png"
                   alt="Minimalist furniture design"
                   fill
                   className="object-cover"

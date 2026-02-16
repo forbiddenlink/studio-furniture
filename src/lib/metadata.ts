@@ -31,7 +31,7 @@ export const defaultMetadata: Metadata = {
     description: siteDescription,
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: siteName,
@@ -42,7 +42,7 @@ export const defaultMetadata: Metadata = {
     card: "summary_large_image",
     title: siteName,
     description: siteDescription,
-    images: ["/og-image.jpg"],
+    images: ["/opengraph-image.png"],
     creator: "@studiofurniture",
   },
   robots: {
@@ -70,7 +70,7 @@ export function generatePageMetadata({
   image?: string;
 }): Metadata {
   const url = `${siteUrl}${path}`;
-  const ogImage = image || "/og-image.jpg";
+  const ogImage = image || "/opengraph-image.png";
 
   return {
     title,

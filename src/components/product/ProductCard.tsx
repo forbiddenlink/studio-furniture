@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { CART } from "@/lib/constants";
 
 interface ProductCardProps {
-  product: Product;
+  readonly product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
@@ -79,23 +79,25 @@ export function ProductCard({ product }: ProductCardProps) {
                 {product.description}
               </p>
             </div>
-            <div className="flex w-full items-center justify-between">
+    <div className="flex w-full items-center justify-between">
               <span 
                 className="text-lg font-medium"
                 aria-label={`Price: $${product.price.toLocaleString()}`}
               >
                 ${product.price.toLocaleString()}
               </span>
-              <Button
-                size="sm"
-                onClick={handleAddToCart}
-                disabled={!product.inStock}
-                className="gap-2"
-                aria-label={`Add ${product.name} to cart`}
-              >
-                <ShoppingCart className="h-4 w-4" aria-hidden="true" />
-                Add
-              </Button>
+              <div className="opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                <Button
+                  size="sm"
+                  onClick={handleAddToCart}
+                  disabled={!product.inStock}
+                  className="gap-2"
+                  aria-label={`Add ${product.name} to cart`}
+                >
+                  <ShoppingCart className="h-4 w-4" aria-hidden="true" />
+                  Add
+                </Button>
+              </div>
             </div>
           </CardFooter>
         </Card>

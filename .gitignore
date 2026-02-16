@@ -60,3 +60,4 @@ storybook-static/
 
 # AI assistant instructions
 .github/instructions/codacy.instructions.md
+.claude/

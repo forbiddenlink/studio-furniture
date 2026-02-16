@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description: "Discover curated, minimalist furniture and home essentials designed for modern living.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "STUDIO Furniture - Minimalist Furniture for Modern Living",
@@ -57,8 +57,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "STUDIO — Minimalist Furniture & Home Essentials",
     description: "Discover curated, minimalist furniture and home essentials designed for modern living.",
-    images: ["/og-image.jpg"],
+    images: ["/opengraph-image.png"],
     creator: "@studiofurniture",
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
   },
   robots: {
     index: true,
@@ -85,10 +89,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
-      </head>
       <body className="antialiased">
         {process.env.NODE_ENV === 'development' && <WebVitals />}
         {children}

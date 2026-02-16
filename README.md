@@ -168,7 +168,7 @@ src/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/studio-furniture.git
+git clone https://github.com/studio-furniture/platform.git
 
 # Navigate to project
 cd studio-furniture

@@ -7,7 +7,7 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="text-center max-w-md">
         <div className="mb-8">
-          <h1 className="font-serif text-9xl font-medium text-muted-foreground/20">
+          <h1 className="font-serif text-9xl font-medium text-muted-foreground/20 animate-pulse">
             404
           </h1>
         </div>

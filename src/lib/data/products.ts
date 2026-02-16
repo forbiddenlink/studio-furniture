@@ -10,7 +10,7 @@ export const products: Product[] = [
     longDescription: "The Arne Lounge Chair combines timeless Scandinavian design with exceptional comfort. Featuring a curved oak frame and premium full-grain leather upholstery, this chair is perfect for creating a cozy reading nook or adding a touch of elegance to any space. The ergonomic design ensures hours of comfortable sitting.",
     price: 1299,
     category: "seating",
-    images: ["https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80"],
+    images: ["/images/products/arne-lounge-chair.png"],
     inStock: true,
     featured: true,
     specifications: {
@@ -30,7 +30,7 @@ export const products: Product[] = [
     longDescription: "The Linear Dining Table showcases exceptional craftsmanship in solid walnut, featuring clean lines and beautiful natural grain patterns. Built to last generations, this table comfortably seats 6-8 guests, making it perfect for family dinners and entertaining. The substantial construction and timeless design ensure it will be the centerpiece of your dining room for years to come.",
     price: 1899,
     category: "tables",
-    images: ["https://images.unsplash.com/photo-1617806118233-18e1de247200?w=800&q=80"],
+    images: ["/images/products/linear-dining-table.png"],
     inStock: true,
     featured: true,
     specifications: {
@@ -50,7 +50,7 @@ export const products: Product[] = [
     longDescription: "The Cloud Ottoman lives up to its name with incredibly plush bouclé upholstery that feels like sitting on a cloud. This versatile piece functions beautifully as extra seating, a footrest, or even a statement coffee table when paired with a tray. The oversized design and modern aesthetic make it a standout addition to contemporary living spaces.",
     price: 899,
     category: "seating",
-    images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80"],
+    images: ["/images/products/cloud-ottoman.png"],
     inStock: true,
     featured: true,
     specifications: {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     longDescription: "Each Orb Pendant Light is individually hand-blown by skilled artisans, resulting in unique variations that add character to every piece. The smoke glass diffuses light beautifully, creating warm ambient lighting perfect for dining areas. Paired with solid brass hardware, this pendant combines artisanal craftsmanship with timeless materials.",
     price: 449,
     category: "lighting",
-    images: ["https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80"],
+    images: ["/images/products/orb-pendant-light.png"],
     inStock: true,
     featured: true,
     specifications: {
@@ -90,7 +90,7 @@ export const products: Product[] = [
     longDescription: "The Frame Storage Cabinet combines minimalist design with functional storage solutions. Hand-woven rattan cane doors add texture and visual interest while concealing adjustable internal shelving. Crafted from solid oak, this cabinet is perfect for storing everything from dinnerware to media equipment while maintaining a clean, uncluttered aesthetic in your living space.",
     price: 1599,
     category: "storage",
-    images: ["https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?w=800&q=80"],
+    images: ["/images/products/frame-storage-cabinet.png"],
     inStock: true,
     featured: true,
     specifications: {
@@ -110,7 +110,7 @@ export const products: Product[] = [
     longDescription: "The Slope Armchair features a distinctive angled backrest that provides optimal lumbar support while creating a striking silhouette. Upholstered in high-performance fabric that resists stains and wear, this chair is as practical as it is beautiful. The tapered hardwood legs add a mid-century modern touch, making it perfect for contemporary interiors.",
     price: 1099,
     category: "seating",
-    images: ["https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&q=80"],
+    images: ["/images/products/slope-armchair.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -130,7 +130,7 @@ export const products: Product[] = [
     longDescription: "The Pivot Coffee Table is a true statement piece, featuring a solid white marble top supported by an architectural brass base. Each table showcases unique natural veining in the marble, ensuring no two pieces are exactly alike. The combination of luxurious materials and sculptural design makes this table a stunning centerpiece for sophisticated living rooms.",
     price: 1299,
     category: "tables",
-    images: ["https://images.unsplash.com/photo-1551298370-9d3d53740c72?w=800&q=80"],
+    images: ["/images/products/pivot-coffee-table.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -150,7 +150,7 @@ export const products: Product[] = [
     longDescription: "The Linear Pendant Light combines modern industrial design with practical functionality. Its elongated form provides even illumination across kitchen islands and dining tables, while the adjustable height allows you to customize the lighting to your space. The matte black powder-coated finish adds contemporary edge to any interior.",
     price: 649,
     category: "lighting",
-    images: ["https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=800&q=80"],
+    images: ["/images/products/linear-pendant-light.png"],
     inStock: true,
     featured: true,
     specifications: {
@@ -170,7 +170,7 @@ export const products: Product[] = [
     longDescription: "The Arch Floor Lamp is an iconic design that never goes out of style. Featuring a heavy black marble base for stability and a gracefully arching brushed steel arm, this lamp can reach over seating areas to provide perfect reading light. The adjustable height and reach make it incredibly versatile for various room configurations.",
     price: 799,
     category: "lighting",
-    images: ["https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80"],
+    images: ["/images/products/arch-floor-lamp.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -190,7 +190,7 @@ export const products: Product[] = [
     longDescription: "The Ladder Shelf brings casual elegance to any space with its leaning design and solid oak construction. The open shelving provides ample room for displaying books, plants, and decorative objects, while the ladder-style silhouette keeps the look light and airy. Perfect for small spaces where traditional bookcases might feel too heavy.",
     price: 699,
     category: "storage",
-    images: ["https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=800&q=80"],
+    images: ["/images/products/ladder-shelf.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -210,7 +210,7 @@ export const products: Product[] = [
     longDescription: "The Minimal Desk exemplifies form meeting function with its clean-lined design and practical storage solutions. The integrated drawer keeps supplies organized and out of sight, while the walnut veneer top and powder-coated steel legs create a sophisticated aesthetic. Perfectly sized for home offices and creative studios without overwhelming the space.",
     price: 899,
     category: "tables",
-    images: ["https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=800&q=80"],
+    images: ["/images/products/minimal-desk.png"],
     inStock: true,
     featured: true,
     specifications: {
@@ -230,7 +230,7 @@ export const products: Product[] = [
     longDescription: "The Modular Sofa adapts to your lifestyle with customizable configurations that can be rearranged as your needs change. Featuring deep seats for maximum comfort and upholstered in stain-resistant performance fabric, this sectional is built for real life. The solid hardwood frame ensures durability, while the modern silhouette keeps your space looking fresh and contemporary.",
     price: 3299,
     category: "seating",
-    images: ["https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80"],
+    images: ["/images/products/modular-sofa.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -250,7 +250,7 @@ export const products: Product[] = [
     longDescription: "The Console Table maximizes functionality in narrow spaces with its slim profile and dual-level design. The top surface is perfect for lamps and decorative items, while the lower shelf provides additional storage or display space. Crafted from solid ash with beautiful grain patterns, this piece adds warmth and utility to entryways and behind sofas.",
     price: 799,
     category: "storage",
-    images: ["https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&q=80"],
+    images: ["/images/products/console-table.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -270,7 +270,7 @@ export const products: Product[] = [
     longDescription: "The Side Table's cylindrical design offers a modern take on a classic furniture essential. Crafted from solid walnut with a rich dark finish, this compact table is perfectly sized for placement next to sofas and beds. Its clean geometric form and quality construction make it a versatile accent piece that works in any room.",
     price: 299,
     category: "tables",
-    images: ["https://images.unsplash.com/photo-1540932239986-30128078f3c5?w=800&q=80"],
+    images: ["/images/products/side-table.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -290,7 +290,7 @@ export const products: Product[] = [
     longDescription: "The Table Lamp combines modern simplicity with warm materials, featuring a hand-crafted white ceramic base and natural linen shade. The soft, diffused light creates a cozy ambiance perfect for bedside tables, reading nooks, or accent lighting. The timeless design ensures it will complement your décor for years to come.",
     price: 249,
     category: "lighting",
-    images: ["https://images.unsplash.com/photo-1534105615926-0f5d1a128d15?w=800&q=80"],
+    images: ["/images/products/table-lamp.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -310,7 +310,7 @@ export const products: Product[] = [
     longDescription: "This set of three hand-thrown vases showcases the beauty of artisanal craftsmanship. Each piece features organic, asymmetrical forms that celebrate the handmade process, finished with a sophisticated matte white glaze. The varying heights (6\", 9\", and 12\") allow for dynamic styling arrangements, whether displayed as a group or separately throughout your home.",
     price: 189,
     category: "decor",
-    images: ["https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=800&q=80"],
+    images: ["/images/products/ceramic-vase-set.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -330,27 +330,27 @@ export const products: Product[] = [
     longDescription: "These throw pillows add instant comfort and style to any seating area. Made from 100% European linen with hidden zipper closures for a clean look, each pillow is filled with premium down for luxurious softness. The natural linen texture adds depth and warmth to sofas, chairs, and beds while maintaining a sophisticated, understated aesthetic.",
     price: 129,
     category: "decor",
-    images: ["https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800&q=80"],
+    images: ["/images/products/throw-pillow-set.png"],
     inStock: true,
     featured: false,
     specifications: {
-      dimensions: '20" × 20" each',
-      material: "100% linen, down insert",
-      color: "Natural linen",
-      weight: "2 lbs",
+      dimensions: '20" × 20"',
+      material: "100% European linen, down fill",
+      color: "Oatmeal",
+      weight: "2 lbs each",
     },
-    tags: ["pillow", "linen", "decor", "throw pillow"],
+    tags: ["pillow", "decor", "linen", "comfort"],
   },
   {
     id: "18",
     name: "Wall Mirror",
     slug: "wall-mirror",
     description:
-      "Round mirror with powder-coated steel frame. Makes spaces feel larger and brighter.",
-    longDescription: "The Wall Mirror combines classic form with modern materials. The circular shape and matte black powder-coated steel frame create a bold statement while reflecting light to make rooms feel more spacious and bright. Perfect for entryways, bathrooms, or above consoles, this mirror adds both function and striking visual impact to any wall.",
-    price: 349,
+      "Round wall mirror with minimal metal frame. Opens up small spaces and reflects light.",
+    longDescription: "The Wall Mirror features a clean, round silhouette with a slim metal frame in a matte black finish. This versatile piece helps reflect light and create the illusion of more space, making it perfect for entryways, bathrooms, or living rooms. The high-quality glass ensures a distortion-free reflection.",
+    price: 199,
     category: "decor",
-    images: ["https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80"],
+    images: ["/images/products/wall-mirror.png"],
     inStock: true,
     featured: false,
     specifications: {
@@ -370,7 +370,7 @@ export const products: Product[] = [
     longDescription: "The Linen Throw Blanket is crafted from 100% European linen and pre-washed to achieve a soft, lived-in texture from the first use. The subtle weave creates visual interest while providing cozy warmth. Drape it over sofas or the foot of your bed for an effortlessly casual yet refined look that embodies relaxed luxury.",
     price: 159,
     category: "decor",
-    images: ["https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80"],
+    images: ["/images/products/linen-throw-blanket.png"],
     inStock: true,
     featured: true,
     specifications: {
@@ -390,7 +390,7 @@ export const products: Product[] = [
     longDescription: "The Wool Area Rug is hand-tufted from 100% New Zealand wool, known for its exceptional softness and durability. The abstract pattern in ivory and charcoal tones adds sophisticated visual interest while remaining versatile enough to complement various design styles. This substantial 8'×10' rug anchors living spaces, adds warmth underfoot, and defines seating areas with timeless elegance.",
     price: 1499,
     category: "decor",
-    images: ["https://images.unsplash.com/photo-1600166898405-da9535204843?w=800&q=80"],
+    images: ["/images/products/wool-area-rug.png"],
     inStock: true,
     featured: true,
     specifications: {
